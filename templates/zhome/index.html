@@ -1,0 +1,404 @@
+{% extends "zhome/homebase.html" %}
+{% load staticfiles %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="hero-content">
+
+    <div class="hero-content-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="hero-content-wrap flex flex-column justify-content-center align-items-start">
+                        <header class="entry-header">
+                            <h4>Federal Polytechnic Idah</h4>
+                            <h1>Electronic Library<br/>Management System</h1>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content">
+                            <p>
+                                Welcome to our digital library. We are steadily on a research to advance human learning through technology, 
+                                as such, this library has been packed with rich local and international contents to improve your research and developement skills.
+                            </p>
+                        </div><!-- .entry-content -->
+
+                        <footer class="entry-footer read-more">
+                            <a href="#">read more</a>
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .hero-content-wrap -->
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .hero-content-hero-content-overlay -->
+</div><!-- .hero-content -->
+
+<div class="icon-boxes">
+    <div class="container-fluid">
+        <div class="flex flex-wrap align-items-stretch">
+            <div class="icon-box">
+                <div class="icon">
+                    <span class="ti-user"></span>
+                </div><!-- .icon -->
+
+                <header class="entry-header">
+                    <h2 class="entry-title">Student Projects</h2>
+                </header><!-- .entry-header -->
+
+                <div class="entry-content">
+                    <p>Here are our innovative student projects for technology advancement.</p>
+                </div><!-- .entry-content -->
+
+                <footer class="entry-footer read-more">
+                    <a href="#">read more<i class="fa fa-long-arrow-right"></i></a>
+                </footer><!-- .entry-footer -->
+            </div><!-- .icon-box -->
+
+            <div class="icon-box">
+                <div class="icon">
+                    <span class="ti-folder"></span>
+                </div><!-- .icon -->
+
+                <header class="entry-header">
+                    <h2 class="entry-title">Our Library</h2>
+                </header><!-- .entry-header -->
+
+                <div class="entry-content">
+                    <p>Access our rich digital library for any book of your choice. Hardcopies are available.</p>
+                </div><!-- .entry-content -->
+
+                <footer class="entry-footer read-more">
+                    <a href="#">read more<i class="fa fa-long-arrow-right"></i></a>
+                </footer><!-- .entry-footer -->
+            </div><!-- .icon-box -->
+
+            <div class="icon-box">
+                <div class="icon">
+                    <span class="ti-book"></span>
+                </div><!-- .icon -->
+
+                <header class="entry-header">
+                    <h2 class="entry-title">Journals</h2>
+                </header><!-- .entry-header -->
+
+                <div class="entry-content">
+                    <p>Our staff publications in various journals worldwide and our institutional collections</p>
+                </div><!-- .entry-content -->
+
+                <footer class="entry-footer read-more">
+                    <a href="#">read more<i class="fa fa-long-arrow-right"></i></a>
+                </footer><!-- .entry-footer -->
+            </div><!-- .icon-box -->
+
+            <div class="icon-box">
+                <div class="icon">
+                    <span class="ti-world"></span>
+                </div><!-- .icon -->
+
+                <header class="entry-header">
+                    <h2 class="entry-title">Reseach</h2>
+                </header><!-- .entry-header -->
+
+                <div class="entry-content">
+                    <p>Our detailed docummenatation about research methods, helpfull links and materials</p>
+                </div><!-- .entry-content -->
+
+                <footer class="entry-footer read-more">
+                    <a href="#">read more<i class="fa fa-long-arrow-right"></i></a>
+                </footer><!-- .entry-footer -->
+            </div><!-- .icon-box -->
+        </div><!-- .row -->
+    </div><!-- .container-fluid -->
+</div><!-- .icon-boxes -->
+
+<section class="featured-courses vertical-column courses-wrap">
+    <div class="container">
+        <div class="row mx-m-25">
+            <div class="col-12 px-25">
+                <header class="heading flex flex-wrap justify-content-between align-items-center">
+                    <h2 class="entry-title">Top Publications</h2>
+
+                    <nav class="courses-menu mt-3 mt-lg-0">
+                        <ul class="flex flex-wrap justify-content-md-end align-items-center">
+                            <li class="active"><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </nav><!-- .courses-menu -->
+                </header><!-- .heading -->
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-6 col-lg-4 px-25">
+                <div class="course-content">
+                    <figure class="course-thumbnail">
+                        <a href="#"><img src="{% static 'zhome/images/1.jpg' %}" alt=""></a>
+                    </figure><!-- .course-thumbnail -->
+
+                    <div class="course-content-wrap">
+                        <header class="entry-header">
+                            <h2 class="entry-title"><a href="#">The Complete Android Developer Course</a></h2>
+
+                            <div class="entry-meta flex align-items-center">
+                                <div class="course-author"><a href="#">Ms. Lara Croft </a></div>
+
+                                <div class="course-date">July 21, 2018</div>
+                            </div><!-- .course-date -->
+                        </header><!-- .entry-header -->
+
+                        <footer class="entry-footer flex justify-content-between align-items-center">
+                            <div class="course-cost">
+                                $45 <span class="price-drop">$68</span>
+                            </div><!-- .course-cost -->
+
+                            <div class="course-ratings flex justify-content-end align-items-center">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star-o"></span>
+
+                                <span class="course-ratings-count">(4 votes)</span>
+                            </div><!-- .course-ratings -->
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .course-content-wrap -->
+                </div><!-- .course-content -->
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-6 col-lg-4 px-25">
+                <div class="course-content">
+                    <figure class="course-thumbnail">
+                        <a href="#"><img src="{% static 'zhome/images/2.jpg' %}" alt=""></a>
+                    </figure><!-- .course-thumbnail -->
+
+                    <div class="course-content-wrap">
+                        <header class="entry-header">
+                            <h2 class="entry-title"><a href="#">The Ultimate Drawing Course Beginner to Advanced</a></h2>
+
+                            <div class="entry-meta flex align-items-center">
+                                <div class="course-author"><a href="#">Michelle Golden</a></div>
+
+                                <div class="course-date">Mar 14, 2018</div>
+                            </div><!-- .course-date -->
+                        </header><!-- .entry-header -->
+
+                        <footer class="entry-footer flex justify-content-between align-items-center">
+                            <div class="course-cost">
+                                <span class="free-cost">Free</span>
+                            </div><!-- .price-drop -->
+
+                            <div class="course-ratings flex justify-content-end align-items-center">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star-o"></span>
+
+                                <span class="course-ratings-count">(4 votes)</span>
+                            </div><!-- .course-ratings -->
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .course-content-wrap -->
+                </div><!-- .course-content -->
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-6 col-lg-4 px-25">
+                <div class="course-content">
+                    <figure class="course-thumbnail">
+                        <a href="#"><img src="{% static 'zhome/images/3.jpg' %}" alt=""></a>
+                    </figure><!-- .course-thumbnail -->
+
+                    <div class="course-content-wrap">
+                        <header class="entry-header">
+                            <h2 class="entry-title"><a href="#">The Complete Digital Marketing Course</a></h2>
+
+                            <div class="entry-meta flex align-items-center">
+                                <div class="course-author"><a href="#">Ms. Lucius</a></div>
+
+                                <div class="course-date">Dec 18, 2018</div>
+                            </div><!-- .course-date -->
+                        </header><!-- .entry-header -->
+
+                        <footer class="entry-footer flex justify-content-between align-items-center">
+                            <div class="course-cost">
+                                $55 <span class="price-drop">$78</span>
+                            </div><!-- .course-cost -->
+
+                            <div class="course-ratings flex justify-content-end align-items-center">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star-o"></span>
+
+                                <span class="course-ratings-count">(4 votes)</span>
+                            </div><!-- .course-ratings -->
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .course-content-wrap -->
+                </div><!-- .course-content -->
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-6 col-lg-4 px-25">
+                <div class="course-content">
+                    <figure class="course-thumbnail">
+                        <a href="#"><img src="{% static 'zhome/images/4.jpg' %}" alt=""></a>
+                    </figure><!-- .course-thumbnail -->
+
+                    <div class="course-content-wrap">
+                        <header class="entry-header">
+                            <h2 class="entry-title"><a href="#">The Unreal Engine Developer Course</a></h2>
+
+                            <div class="entry-meta flex align-items-center">
+                                <div class="course-author"><a href="#">Mr. John Wick</a></div>
+
+                                <div class="course-date">Otc 17, 2018</div>
+                            </div><!-- .course-date -->
+                        </header><!-- .entry-header -->
+
+                        <footer class="entry-footer flex justify-content-between align-items-center">
+                            <div class="course-cost">
+                                <span class="free-cost">Free</span>
+                            </div><!-- .course-cost -->
+
+                            <div class="course-ratings flex justify-content-end align-items-center">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star-o"></span>
+
+                                <span class="course-ratings-count">(4 votes)</span>
+                            </div><!-- .course-ratings -->
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .course-content-wrap -->
+                </div><!-- .course-content -->
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-6 col-lg-4 px-25">
+                <div class="course-content">
+                    <figure class="course-thumbnail">
+                        <a href="#"><img src="{% static 'zhome/images/5.jpg' %}" alt=""></a>
+                    </figure><!-- .course-thumbnail -->
+
+                    <div class="course-content-wrap">
+                        <header class="entry-header">
+                            <h2 class="entry-title"><a href="#">Progressive Web Apps (PWA) - The Complete Guide</a></h2>
+
+                            <div class="entry-meta flex align-items-center">
+                                <div class="course-author"><a href="#">Mr. Tom Redder</a></div>
+
+                                <div class="course-date">Sep 14, 2018</div>
+                            </div><!-- .course-date -->
+                        </header><!-- .entry-header -->
+
+                        <footer class="entry-footer flex justify-content-between align-items-center">
+                            <div class="course-cost">
+                                $38 <span class="price-drop">$48</span>
+                            </div><!-- .course-cost -->
+
+                            <div class="course-ratings flex justify-content-end align-items-center">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star-o"></span>
+
+                                <span class="course-ratings-count">(4 votes)</span>
+                            </div><!-- .course-ratings -->
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .course-content-wrap -->
+                </div><!-- .course-content -->
+            </div><!-- .col -->
+
+            <div class="col-12 col-md-6 col-lg-4 px-25">
+                <div class="course-content">
+                    <figure class="course-thumbnail">
+                        <a href="#"><img src="{% static 'zhome/images/6.jpg' %}" alt=""></a>
+                    </figure><!-- .course-thumbnail -->
+
+                    <div class="course-content-wrap">
+                        <header class="entry-header">
+                            <h2 class="entry-title"><a href="#">Cryptocurrency Investment Course 2018</a></h2>
+
+                            <div class="entry-meta flex align-items-center">
+                                <div class="course-author"><a href="#">Russell Stephens</a></div>
+
+                                <div class="course-date">Nov 06, 2018</div>
+                            </div><!-- .course-date -->
+                        </header><!-- .entry-header -->
+
+                        <footer class="entry-footer flex justify-content-between align-items-center">
+                            <div class="course-cost">
+                                <span class="free-cost">Free</span>
+                            </div><!-- .course-cost -->
+
+                            <div class="course-ratings flex justify-content-end align-items-center">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star-o"></span>
+
+                                <span class="course-ratings-count">(4 votes)</span>
+                            </div><!-- .course-ratings -->
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .course-content-wrap -->
+                </div><!-- .course-content -->
+            </div><!-- .col -->
+
+            <div class="col-12 px-25 flex justify-content-center">
+                <a class="btn" href="#">view all publications</a>
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</section><!-- .courses-wrap -->
+
+<section class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 align-content-lg-stretch">
+                <header class="heading">
+                    <h2 class="entry-title">About fepoda E-Library</h2>
+
+                    <p>
+                        Our aim is to digitally bring the library to your doorstep and foster boredaless learning. Our E-library doubles as an elearning system and an academia community at large.
+                    </p>
+                </header><!-- .heading -->
+
+                <div class="entry-content ezuca-stats">
+                    <div class="stats-wrap flex flex-wrap justify-content-lg-between">
+                        <div class="stats-count">
+                            50<span></span>
+                            <p>Student Projects</p>
+                        </div><!-- .stats-count -->
+
+                        <div class="stats-count">
+                            30<span></span>
+                            <p>Staff Publications</p>
+                        </div><!-- .stats-count -->
+
+                        <div class="stats-count">
+                            340<span></span>
+                            <p>Journals</p>
+                        </div><!-- .stats-count -->
+
+                        <div class="stats-count">
+                            20<span></span>
+                            <p>Active Users</p>
+                        </div><!-- .stats-count -->
+                    </div><!-- .stats-wrap -->
+                </div><!-- .ezuca-stats -->
+            </div><!-- .col -->
+
+            <div class="col-12 col-lg-6 flex align-content-center mt-5 mt-lg-0">
+                <div class="ezuca-video position-relative">
+                    <div class="video-play-btn position-absolute">
+                        <img src="{% static 'zhome/images/video-icon.png' %}" alt="Video Play">
+                    </div><!-- .video-play-btn -->
+
+                    <img src="{% static 'zhome/images/video-screenshot.png' %}" alt="">
+                </div><!-- .ezuca-video -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</section><!-- .about-section -->
+
+{% endblock content %}
