@@ -92,3 +92,13 @@ def private_message(request):
 
 def leasing(user_id, book_id, request):
     pass
+
+def uplaod(request):
+    return render(request, 'books.html')
+
+def bookupload(request):
+    if request.method == 'POST':
+        print("validating content...")
+        print("uploading...")
+        print("Book upload was successful")
+    return render(request, 'success.html')

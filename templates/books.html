@@ -1,0 +1,150 @@
+{% extends "dashbase.html" %}
+{% load staticfiles %}
+{% block title %}Administrator{% endblock %}
+
+<body>
+
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      {% block nav %}
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">User Accounts</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Staff Profiles </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Student Profiles </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Uploads</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Books</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Lecture Note</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Book Borrowing</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Borrow a Book</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Borrowed Books</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View Borrowers List</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View Request</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View Overdue</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+              <i class="icon-grid-2 menu-icon"></i>
+              <span class="menu-title">Messages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="tables">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">From Staffs</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">From Students</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">From Public</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="pages/documentation/documentation.html">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Plagiarism Checker</span>
+            </a>
+          </li>
+        </ul>
+      {% endblock %}
+
+      {% block more_content %}
+        <h3>Fill book details correct to upload content</h3>
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Book/Material Upload</h4>
+                <p class="card-description">
+                  
+                </p>
+                <form class="forms-sample" action="bookupload" method="post">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="exampleInputName1">Title</label>
+                    <input type="text" class="form-control" id="exampleInputName1" placeholder="Title of the book">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail3">Authors' Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Author">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword4">ISBN</label>
+                    <input type="text" class="form-control" id="exampleInputPassword4" placeholder="ISBN">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelectGender">Related Faculty</label>
+                      <select class="form-control" id="exampleSelectGender">
+                        <option>Engineerng</option>
+                        <option>Technology</option>
+                        <option>Social Science</option>
+                      </select>
+                    </div>
+                  <div class="form-group">
+                    <label>File upload</label>
+                    <input type="file" name="img[]" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                      <input type="text" class="form-control file-upload-info" disabled placeholder="Upload PDF">
+                      <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputCity1">Shelf Position</label>
+                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="Shelf Position">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleTextarea1">Description</label>
+                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endblock %}
+
+</body>
+
+</html>
+
