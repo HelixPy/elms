@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{% static 'vendors/datatables.net-bs4/dataTables.bootstrap4.css' %}">
   <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'js/select.dataTables.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
@@ -125,9 +126,96 @@
     <div class="container-fluid page-body-wrapper">
 
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-      {% block nav %}
-
-      {% endblock %}
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">User Accounts</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="staffprofile"> Staff Profiles </a></li>
+                <li class="nav-item"> <a class="nav-link" href="studentprofile"> Student Profiles </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="uploads">
+              <i class="mdi mdi-cloud-upload menu-icon"></i>
+              <span class="menu-title">Uploads</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="borrowing">
+              <i class="mdi mdi-television-guide menu-icon"></i>
+              <span class="menu-title">Browse Book</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="mdi mdi-book-open-variant menu-icon"></i>
+              <span class="menu-title">Book Lending</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-book-open-variant menu-icon"></i>
+              <span class="menu-title">Book Borrowing</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Borrowed Books</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View Request</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View Overdue</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="mdi mdi-forum menu-icon"></i>
+              <span class="menu-title">Messages</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="borrowing">
+              <i class="mdi mdi-message-draw menu-icon"></i>
+              <span class="menu-title">Response</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#managebook" aria-expanded="false" aria-controls="auth">
+              <i class="mdi mdi-account-card-details menu-icon"></i>
+              <span class="menu-title">Manage Profiles</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="managebook">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="staffprofile"> Staff Profiles </a></li>
+                <li class="nav-item"> <a class="nav-link" href="studentprofile"> Student Profiles </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="mdi mdi-jsfiddle menu-icon"></i>
+              <span class="menu-title">Manage Uploads</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/documentation/documentation.html">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Plagiarism Checker</span>
+            </a>
+          </li>
+        </ul>
       </nav>
       <!-- partial -->
       <div class="main-panel">

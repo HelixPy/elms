@@ -73,6 +73,15 @@ def dashboard(request):
         print(e); return redirect(login)
     return render(request, 'lib_admin_home.html')
 
+def staffprofile(request):
+    return render(request, 'staffprofile.html')
+
+def studentprofile(request):
+    return render(request, 'student.html')
+
+def borrowing(request):
+    return render(request, 'borrowing.html')
+
 
 def public_search(keyword, request):
     pass
@@ -93,8 +102,8 @@ def private_message(request):
 def leasing(user_id, book_id, request):
     pass
 
-def uplaod(request):
-    return render(request, 'books.html')
+def uploads(request):
+    return render(request, 'uploads.html')
 
 def bookupload(request):
     if request.method == 'POST':
