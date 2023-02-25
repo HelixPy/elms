@@ -3,7 +3,7 @@
 {% load humanize %}
 <html lang="en">
 
-<head>
+<head> 
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,6 +48,8 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
+
+
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="icon-bell mx-0"></i>
@@ -96,16 +98,19 @@
               </a>
             </div>
           </li>
+
+
+
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{% static 'images/faces/face28.jpg' %}" alt="profile"/>
+              <img src="{% static 'user_data.passport' %}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="login">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -127,12 +132,14 @@
 
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
+
           <li class="nav-item">
             <a class="nav-link" href="dashboard">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          {% if user_data.elib_duty == 'admin' %}
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="icon-head menu-icon"></i>
@@ -147,24 +154,6 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="uploads">
-              <i class="mdi mdi-cloud-upload menu-icon"></i>
-              <span class="menu-title">Uploads</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="borrowing">
-              <i class="mdi mdi-television-guide menu-icon"></i>
-              <span class="menu-title">Browse Book</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <i class="mdi mdi-book-open-variant menu-icon"></i>
-              <span class="menu-title">Book Lending</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="mdi mdi-book-open-variant menu-icon"></i>
               <span class="menu-title">Book Borrowing</span>
@@ -177,18 +166,6 @@
                 <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View Overdue</a></li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <i class="mdi mdi-forum menu-icon"></i>
-              <span class="menu-title">Messages</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="borrowing">
-              <i class="mdi mdi-message-draw menu-icon"></i>
-              <span class="menu-title">Response</span>
-            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#managebook" aria-expanded="false" aria-controls="auth">
@@ -215,6 +192,54 @@
               <span class="menu-title">Plagiarism Checker</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#managebook" aria-expanded="false" aria-controls="auth">
+              <i class="mdi mdi-forum menu-icon menu-icon"></i>
+              <span class="menu-title">Messages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="managebook">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="staffprofile">Internal</a></li>
+                <li class="nav-item"> <a class="nav-link" href="studentprofile">External</a></li>
+              </ul>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="borrowing">
+              <i class="mdi mdi-television-guide menu-icon"></i>
+              <span class="menu-title">Browse Book</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="mdi mdi-book-open-variant menu-icon"></i>
+              <span class="menu-title">Book Lending</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="mdi mdi-forum menu-icon"></i>
+              <span class="menu-title">Messages</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if user_data.elib_duty == 'staff' %}
+          <li class="nav-item">
+            <a class="nav-link" href="uploads">
+              <i class="mdi mdi-cloud-upload menu-icon"></i>
+              <span class="menu-title">Uploads</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="borrowing">
+              <i class="mdi mdi-message-draw menu-icon"></i>
+              <span class="menu-title">Response</span>
+            </a>
+          </li>
+          {% else %}
+          {% endif %}
         </ul>
       </nav>
       <!-- partial -->
@@ -224,8 +249,8 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Welcome Ganyu</h3>
-                  <h6 class="font-weight-normal mb-0">You have 3 upload requests</h6>
+                  <h3 class="font-weight-bold">Welcome {{ user_data.full_name }}</h3>
+                  <h6 class="font-weight-normal mb-0">{{ user_data.user_cart }} access</h6>
                 </div>
                 <div class="col-12 col-xl-4">
                  <div class="justify-content-end d-flex">

@@ -35,8 +35,23 @@ def photo_saver(file_data):
         return file_url
     return False
 
-def user_data(user_id):
-    pass
+
+def get_user_data(identity, user_cart):
+    try:
+        if user_cart != "student":
+            recs = staff.objects.get(staff_id=identity)
+        else:
+            recs = student.objects.get(reg_num=identity)
+        return recs
+    except Exception as e:
+        print(e);return False
+
+
+def unwrap(query):
+    y = []
+    for x in query:
+        y.append(x)
+    return y
 
 #routes downwards
 
@@ -46,6 +61,7 @@ def home(request):
 def login(request):
     if request.method == "POST":
         login_data = request.POST.getlist('login_data')
+        print(login_data)
         try:
             try:
                 auths = gen_login.objects.get(user_id=login_data[0].lower())
@@ -54,7 +70,9 @@ def login(request):
                 elif auths.acc_status == "inactive":
                     return render(request, 'login.html', {'greet': random.choice(greetings), 'error_msg': "Sorry your profile has been Deactivated, report to the admin."})
                 else:
-                    request.session["user_id"] = login_data[0].lower();return redirect('dashboard')
+                    request.session["user_id"] = login_data[0].lower();request.session["user_cart"]=auths.user_cart
+                    return redirect('dashboard')
+
             except ObjectDoesNotExist:
                 return render(request, 'login.html', {'greet': random.choice(greetings), 'error_msg':f"We do not have any records for {login_data[0].upper()} "})
         except Exception as e:
@@ -68,10 +86,13 @@ def dashboard(request):
         if request.session["user_id"] in not_allowed:
             return redirect(login)
         else:
-            pass
+            user_data = get_user_data(request.session["user_id"], request.session['user_cart'])
+            if user_data:
+                return render(request, "lib_admin_home.html", {"user_data": user_data})
+            else:
+                return render(request, 'login.html', {'greet': random.choice(greetings), 'error_msg':f"We are unable to fetch your records at the moment"})
     except Exception as e:
         print(e); return redirect(login)
-    return render(request, 'lib_admin_home.html')
 
 def staffprofile(request):
     return render(request, 'staffprofile.html')
@@ -82,7 +103,6 @@ def studentprofile(request):
 def borrowing(request):
     return render(request, 'borrowing.html')
 
-
 def public_search(keyword, request):
     pass
 
@@ -91,7 +111,6 @@ def private_search(keyword, request):
 
 def publications(request):
     pass
-
 
 def public_message(request):
     pass

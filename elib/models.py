@@ -22,6 +22,7 @@ class student(models.Model):
     reg_num = models.CharField(max_length=50)
     passport = models.CharField(max_length=1000, default=default_passport)
     date_enrolled = models.DateTimeField(default=right_now, blank=True)
+    user_cart = models.CharField(max_length=50, default='student')
     def __str__(self):
         return f"{self.full_name} - {self.reg_num}"
 
@@ -35,6 +36,7 @@ class staff(models.Model):
     passport = models.CharField(max_length=1000, default=default_passport)
     date_enrolled = models.DateTimeField(default=right_now, blank=True)
     elib_duty = models.CharField(max_length=1000, default=default_elib_duty)
+    user_cart = models.CharField(max_length=50, default='staff')
     def __str__(self):
         return f"{self.full_name} - {self.department}"
 
@@ -104,6 +106,7 @@ class reading_list(models.Model):
 class gen_login(models.Model):
     user_id = models.CharField(max_length=100)
     password = models.CharField(max_length=15)
+    user_cart = models.CharField(max_length=15)
     last_login = models.DateTimeField(default=right_now, blank=True)
     acc_status = models.CharField(max_length=1000, default='active')
     auth_token = models.CharField(max_length=10)
