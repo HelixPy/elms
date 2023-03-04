@@ -1,0 +1,151 @@
+{% extends "dashbase.html" %}
+{% load staticfiles %}
+{% block title %}Create {{request.session.create_item}} profile{% endblock %}
+
+<body>
+
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+
+      {% block more_content %}
+      <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            {% if request.session.create_item == 'student' %}
+            <div class="card card-tale">
+              <div class="card-body">
+                <p class="mb-4">Registered Students</p>
+                <p class="fs-30 mb-2">{{stats.studens}}</p>
+                <p></p>
+              </div>
+            </div>
+            {% else %}
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            {% if request.session.create_item == 'staff' %}
+            <div class="card card-tale">
+              <div class="card-body">
+                <p class="mb-4">Registered Staffs</p>
+                <p class="fs-30 mb-2">{{stats.staffs}}</p>
+                <p></p>
+              </div>
+            </div>
+            {% else %}
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+
+        </div>
+      </div>
+      {% if request.session.create_item == 'student' %}
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Create Student profile</h4>
+            <p class="card-description">
+              The asteric fields are compulsory
+            </p>
+            <form class="forms-sample" action="create_staff" method="post">
+                {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputName1">Name</label>
+                <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="student_data" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail3">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" name="student_data" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleSelectGender">Department</label>
+                  <select class="form-control" id="exampleSelectGender" name="student_data" required>
+                    {% for dept in department %}
+                    <option value="{{dept}}">{{dept | title}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              <div class="form-group">
+                <label>File upload</label>
+                <input type="file" name="img[]" class="file-upload-default" name="student_data" required>
+                <div class="input-group col-xs-12">
+                  <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Passport" >
+                  <span class="input-group-append">
+                    <button class="file-upload-browse btn btn-primary" type="button">Upload Passport</button>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputCity1">Registration number</label>
+                <input type="text" class="form-control" id="exampleInputCity1" placeholder="Enter registration number">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputCity1x">User Category</label>
+                <input type="text" class="form-control" id="exampleInputCity1x" placeholder="Student" readonly value="student" name="student_data">
+              </div>
+              <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+
+      {% if request.session.create_item == 'staff' %}
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Create staff profile</h4>
+            <p class="card-description">
+              The asteric fields are compulsory
+            </p>
+            <form class="forms-sample">
+              <div class="form-group">
+                <label for="exampleInputName1">Name</label>
+                <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail3">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword4">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="exampleSelectGender">Gender</label>
+                  <select class="form-control" id="exampleSelectGender">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              <div class="form-group">
+                <label>File upload</label>
+                <input type="file" name="img[]" class="file-upload-default">
+                <div class="input-group col-xs-12">
+                  <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                  <span class="input-group-append">
+                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputCity1">City</label>
+                <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea1">Textarea</label>
+                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+
+      {% endblock %}
+
+</body>
+
+</html>

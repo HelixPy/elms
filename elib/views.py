@@ -13,6 +13,7 @@ from .models import (message, student, staff, publication, book,
 not_allowed = [None, "none", "", False, 0, [], (), {}, "/", ]
 EXT_ALLOWED = ["pdf", "docx", "jpg", "jpeg", "png", "xlsx", "pub"]
 greetings = ["Hi dear", "Happy reading!", "How are you today?", "Whats up?", "Holla!", "How's it going?", "Velkom!", "Hello! let's get started"]
+welcome_msg = ""
 
 right_now = datetime.datetime.now(); right_now = pytz.utc.localize(right_now); one_month = right_now + datetime.timedelta(days=30)
 
@@ -26,6 +27,7 @@ def allowed_image(filename):
         return True
     else:
         return False
+
 def photo_saver(file_data):
     fss = FileSystemStorage()
     if allowed_image(file_data.name):
@@ -64,6 +66,8 @@ def stats():
     except Exception as e:
         print(e);return False
 
+def single_user_data(id):
+    pass
 
 def unwrap(query):
     y = []
@@ -105,11 +109,12 @@ def dashboard(request):
             return redirect(login)
         else:
             user_data = get_user_data(request.session["user_id"], request.session['user_cart'])
+            request.session["current_user"]=user_data.full_name 
             if user_data:
                 request.session["elib_duty"]=user_data.elib_duty
-                return render(request, "lib_admin_home.html", {"user_data": user_data, "stats":stats()})
+                return render(request, "lib_admin_home.html", {"user_data": user_data, "stats":stats(), "welcome_msg":right_now })
             else:
-                return render(request, 'login.html', {'greet': random.choice(greetings), 'error_msg':f"We are unable to fetch your records at the moment"})
+                return render(request, 'login.html', { "welcome_msg":right_now ,'greet': random.choice(greetings), 'error_msg':f"We are unable to fetch your records at the moment"})
     except Exception as e:
         print(e); return redirect(login)
 
@@ -117,22 +122,59 @@ def staffprofile(request):
     if request.session["user_id"] in not_allowed:
         return redirect(login)
     else:
-        request.session["create_item"] = "staff"
-        return render(request, 'manage_staffs.html')
-def staff_details(request, id):
-    pass
+        welcome_msg = "You can manage and create new staff profile here"
+        request.session["create_item"] = "staff"; get_stats=stats()
+        return render(request, 'manage_staffs.html', {"staff_data":get_stats['staff_data'], "welcome_msg":welcome_msg})
 
+def staff_details(request, id):
+    #fetch data from multiple
+    pass
 
 def studentprofile(request):
     if request.session["user_id"] in not_allowed:
         return redirect(login)
     else:
-        request.session["create_item"] = "student"
-        return render(request, 'manage_student.html')
+        welcome_msg = "You can manage and create new student profile here"
+        request.session["create_item"] = "student"; get_stats=stats()
+        return render(request, 'manage_students.html', {"student_data":get_stats['student_data'], "welcome_msg":welcome_msg})
+
 def student_details(request, id):
     pass
 
+def create_staff(request):
+    if request.session["user_id"] in not_allowed:
+        return redirect(login)
+    else:
+        if request.method == "POST":
+            try:
+                staff_model = staff(full_name="")
+                staff_model.save()
+                return "success"
+            except Exception as e:
+                print(e); return False
+        else:
+            request.session["create_item"] = 'staff';return render(request, 'create_staff.html')
 
+def create_student(request):
+    if request.session["user_id"] in not_allowed:
+        return redirect(login)
+    else:
+        if request.method == "POST":
+            pass
+        else:
+            request.session["create_item"] = 'student';return render(request, 'create_student.html')
+
+def create_item(request):
+    try:
+        if request.session["user_cart"] != "admin":
+            return redirect(login)
+        else:
+            if request.method == "POST":
+                pass
+            else:
+                return render(request, 'create.html', {"stats":stats()})
+    except Exception as e:
+        print(e);return redirect(dashboard)
 
 def borrowing(request):
     return render(request, 'borrowing.html')
