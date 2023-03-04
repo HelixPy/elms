@@ -1,5 +1,6 @@
 from django.db import models; import datetime;  import pytz
 
+default_staff_photo=""
 right_now = datetime.datetime.now(); right_now = pytz.utc.localize(right_now)
 default_visibility = "offlne";default_thumbnail = " ";default_passport = " ";default_elib_duty = "user"
 ##oublic, private, both, offline##default_elib_duty=user,bookeeping
@@ -22,7 +23,7 @@ class student(models.Model):
     reg_num = models.CharField(max_length=50)
     passport = models.CharField(max_length=1000, default=default_passport)
     date_enrolled = models.DateTimeField(default=right_now, blank=True)
-    user_cart = models.CharField(max_length=50, default='student')
+    user_cart = models.CharField(max_length=50, )
     def __str__(self):
         return f"{self.full_name} - {self.reg_num}"
 
@@ -36,7 +37,7 @@ class staff(models.Model):
     passport = models.CharField(max_length=1000, default=default_passport)
     date_enrolled = models.DateTimeField(default=right_now, blank=True)
     elib_duty = models.CharField(max_length=1000, default=default_elib_duty)
-    user_cart = models.CharField(max_length=50, default='staff')
+    user_cart = models.CharField(max_length=50, default='student')
     def __str__(self):
         return f"{self.full_name} - {self.department}"
 
@@ -50,7 +51,8 @@ class publication(models.Model):
     upload_staff_id = models.CharField(max_length=50)
     thumbnail = models.CharField(max_length=1000, default=default_thumbnail)
     other_info = models.CharField(max_length=1000)
-    visibility = models.CharField(max_length=1000, default=default_visibility)  
+    visibility = models.CharField(max_length=1000, default=default_visibility)
+    staff_photo = models.CharField(max_length=1000, default=default_staff_photo)  
     def __str__(self):
         return f"{self.title} - {self.journal}"
 

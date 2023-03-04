@@ -1,6 +1,6 @@
 {% extends "dashbase.html" %}
 {% load staticfiles %}
-{% block title %}Staff Profiles{% endblock %}
+{% block title %}Administrator{% endblock %}
 
 <body>
 
@@ -8,15 +8,22 @@
       <!-- partial:partials/_sidebar.html -->
 
       {% block more_content %}
-
+      <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <big><a>Create New Staff Profile</a></big>
+          </div>
+        </div>
+      </div>
 
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Upload Requests</h4>
+            <h4 class="card-title">Staffs</h4>
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
+                
                   <tr>
                     <th>
                       Photo
@@ -25,24 +32,24 @@
                       Staff ID
                     </th>
                     <th>
-                      Upload Title
+                      Department
                     </th>
                     <th>
-                      Journal
+                      Phone number
                     </th>
                     <th>
-                      Visibility
+                      Profile Status
                     </th>
                     <th>
-                      Date Published
+                      Date Enroled
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {% for pub in stats.pub_data %}
+                  {% for pub in staff_data.pub_data %}
                   <tr>
                     <td class="py-1">
-                      <img src="{% static 'images/faces/face1.jpg' %}" alt="image"/>
+                      <a href="staff_details/{{staff_data.id}}"><img src="{% static 'images/faces/face1.jpg' %}" alt="image"/></a>
                     </td>
                     <td>
                       {{pub.staff_id}}

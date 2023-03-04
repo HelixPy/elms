@@ -45,6 +45,24 @@ def get_user_data(identity, user_cart):
         return recs
     except Exception as e:
         print(e);return False
+    
+def stats():
+    try:
+        books_borrowed = book.objects.filter(available_on_shelf='borrowed').count()
+        books_available = book.objects.filter(available_on_shelf='available').count()
+        all_books = books_borrowed + books_available
+        public_pub = publication.objects.filter(visibility='public').count()
+        private_pub = publication.objects.filter(visibility='private').count()
+        pub_data = publication.objects.all()
+        all_pubs = public_pub + private_pub
+        students = student.objects.all().count(); student_data = student.objects.all()
+        staffs = staff.objects.all().count(); staff_data = staff.objects.all() 
+        result = {"books_borrowed":books_borrowed, "books_available":books_available,"pub_data":pub_data, 
+                  "public_pub":public_pub, "private_pub":private_pub, "students":students, "staffs":staffs, 
+                  "all_books":all_books, "all_pubs":all_pubs, "staff_data":staff_data,"student_data":student_data }
+        return result
+    except Exception as e:
+        print(e);return False
 
 
 def unwrap(query):
@@ -70,7 +88,7 @@ def login(request):
                 elif auths.acc_status == "inactive":
                     return render(request, 'login.html', {'greet': random.choice(greetings), 'error_msg': "Sorry your profile has been Deactivated, report to the admin."})
                 else:
-                    request.session["user_id"] = login_data[0].lower();request.session["user_cart"]=auths.user_cart
+                    request.session["user_id"] = login_data[0].lower();request.session["user_cart"]=auths.user_cart; 
                     return redirect('dashboard')
 
             except ObjectDoesNotExist:
@@ -88,17 +106,33 @@ def dashboard(request):
         else:
             user_data = get_user_data(request.session["user_id"], request.session['user_cart'])
             if user_data:
-                return render(request, "lib_admin_home.html", {"user_data": user_data})
+                request.session["elib_duty"]=user_data.elib_duty
+                return render(request, "lib_admin_home.html", {"user_data": user_data, "stats":stats()})
             else:
                 return render(request, 'login.html', {'greet': random.choice(greetings), 'error_msg':f"We are unable to fetch your records at the moment"})
     except Exception as e:
         print(e); return redirect(login)
 
 def staffprofile(request):
-    return render(request, 'staffprofile.html')
+    if request.session["user_id"] in not_allowed:
+        return redirect(login)
+    else:
+        request.session["create_item"] = "staff"
+        return render(request, 'manage_staffs.html')
+def staff_details(request, id):
+    pass
+
 
 def studentprofile(request):
-    return render(request, 'student.html')
+    if request.session["user_id"] in not_allowed:
+        return redirect(login)
+    else:
+        request.session["create_item"] = "student"
+        return render(request, 'manage_student.html')
+def student_details(request, id):
+    pass
+
+
 
 def borrowing(request):
     return render(request, 'borrowing.html')

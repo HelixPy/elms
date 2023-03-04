@@ -6,6 +6,11 @@ from django.conf import settings
 urlpatterns = [
     path('', views.home, name='home'),
     path('home', views.home, name='home'),
+    path('staff_details/<str:keyword>', views.staff_details, name='staff_details'),
+    path('student_details/<str:keyword>', views.student_details, name='student_details'),
+
+
+
     path('public_search/<str:keyword>', views.public_search, name='public_search'),
     path('private_search/<str:keyword>', views.private_search, name='private_search'),
     path('publications', views.publications, name='publications'),

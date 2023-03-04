@@ -139,14 +139,14 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          {% if user_data.elib_duty == 'admin' %}
+          {% if request.session.elib_duty == 'admin' %}
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#user_account" aria-expanded="false" aria-controls="user_account">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">User Accounts</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
+            <div class="collapse" id="user_account">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="staffprofile"> Staff Profiles </a></li>
                 <li class="nav-item"> <a class="nav-link" href="studentprofile"> Student Profiles </a></li>
@@ -170,13 +170,15 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#managebook" aria-expanded="false" aria-controls="auth">
               <i class="mdi mdi-account-card-details menu-icon"></i>
-              <span class="menu-title">Manage Profiles</span>
+              <span class="menu-title">Manage Materials</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="managebook">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="staffprofile"> Staff Profiles </a></li>
-                <li class="nav-item"> <a class="nav-link" href="studentprofile"> Student Profiles </a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Books</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Lecture notes</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Videos</a></li>
               </ul>
             </div>
           </li>
@@ -187,21 +189,21 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="#">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Plagiarism Checker</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#managebook" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#messages" aria-expanded="false" aria-controls="messages">
               <i class="mdi mdi-forum menu-icon menu-icon"></i>
               <span class="menu-title">Messages</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="managebook">
+            <div class="collapse" id="messages">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="staffprofile">Internal</a></li>
-                <li class="nav-item"> <a class="nav-link" href="studentprofile">External</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">Internal</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">External</a></li>
               </ul>
             </div>
           </li>
@@ -225,7 +227,7 @@
             </a>
           </li>
           {% endif %}
-          {% if user_data.elib_duty == 'staff' %}
+          {% if request.session.elib_duty == 'staff' %}
           <li class="nav-item">
             <a class="nav-link" href="uploads">
               <i class="mdi mdi-cloud-upload menu-icon"></i>
